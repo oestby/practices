@@ -10,4 +10,9 @@ Transcribing Python and simple arithmetics.
 
 ## Practice 2:
 
-TBA.
+Loops, functions, and program flow.
+I used multiple files, but that should not be necessary.
+
+## Practice 3:
+
+TBA!

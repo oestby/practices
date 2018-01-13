@@ -2,6 +2,7 @@
 #include "include/task_2.hpp"
 #include "include/task_1.hpp"
 #include "include/task_4.hpp"
+#include "include/task_5.hpp"
 
 void multipleTable(){
     int size;
@@ -26,7 +27,8 @@ int main(int argc, char** argv){
     << "2) Sum multiple numbers." << std::endl
     << "3) Convert NOK to EUR." << std::endl
     << "4) Print a table of multiplication." << std::endl
-    << "5) Solve a quadratic equation." << std::endl;
+    << "5) Solve a quadratic equation." << std::endl
+    << "6) Calculate the payments of your loan." << std::endl
     << "Enter your choice: ";
     std::cin >> choice;
     std::cout << std::endl;
@@ -48,6 +50,9 @@ int main(int argc, char** argv){
             break;
         case 5:
             solveQuadraticEquation();
+            break;
+        case 6:
+            calculateLoanPayments();
             break;
         default:
             std::cout << "Not a valid option." << std::endl;
