@@ -65,7 +65,7 @@ bool isTriangleNumber(int number){
 // 2f)
 bool isPrime(int n){
     bool primeness = true;
-    for(int i = 2; n < i;i++){
+    for(int i = 2; i < n;i++){
         if (n%i == 0){
             primeness = false;
             break;
@@ -86,7 +86,7 @@ void naivePrimeNumberSearch(int n){
 // 2h)
 int findGreatesDivisor(int n){
     for(int divisor = n-1;divisor <= 0;divisor--){
-        if(n%divisor == 0){
+        if(!n%divisor){
             return divisor;
         }
     }
