@@ -8,21 +8,25 @@
 
 int main(int argc, char** argv){
     std::srand(std::time(nullptr));
-
-    //Checking if we get correct results
-    double result = posX(0, 50.0, 5.0);
-    double expected = 250.0;
-    double error = std::pow(expected-result, 2);
-    double margin = 0.0001;
-    if(error < margin){
-        std::cout << "You did good, comrade" << std::endl;
+    bool play = true;
+    char choice = 'y';
+    while(play){
+        playTargetPractice();
+        std::cout << "Play again? (y/n)";
+        std::cin >> choice;
+        switch(choice){
+            case 'y':
+                play = true;
+                break;
+            case 'n':
+                play = false;
+                break;
+            default:
+                std::cout << "Not a valid input, exiting." << std::endl;
+                play = false;
+                break;
+        }
     }
-    else{
-        std::cout << "Back to training!" << std::endl;
-    }
-    
-    std::cout << "Random number: " << randomWithLimits(0, 13) << std::endl;
-
     return 0;
 }
 
