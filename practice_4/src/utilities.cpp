@@ -79,6 +79,13 @@ randomWithLimits(char array[], int len, int lower, int upper){
 }
 
 void
-readInputToCString(){
+readInputToCString(char array[], int len, int lower, int upper){
+    int fill = 0;
+    char l = lower, u = upper;
+    std::cout << "Enter characters between " << l << " and " << u << ":" << std::endl;
+     
+    while (fill <= len){
+        
+    }
     
 }

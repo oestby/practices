@@ -10,6 +10,6 @@ int randomWithLimits(int lower, int upper);
 void sortArray(int array[], int len);
 double medianOfArray(int array[], int len);
 void randomizeCString(char array[], int len, int lower, int upper);
-void readInputToCString(char array[], int lower, int upper);
+void readInputToCString(char array[], int len, int lower, int upper);
 
 #endif
