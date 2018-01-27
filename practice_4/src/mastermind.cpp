@@ -62,6 +62,9 @@ playMastermind()
             }
             else tries--;
         }
+        if (!win){
+            std::cout << "Sorry about the loss, mate, try again!" << std::endl;
+        }
         std::cout << "Do you wanna play again?(y/n)" << std::endl;
         std::cin >> choice;
         if (choice == 'n')
