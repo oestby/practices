@@ -5,5 +5,6 @@ void testCallByValue();
 void testCallByPointer();
 void testTablesSorting();
 void testCStrings();
+void testCStringsFiveYears();
 
 #endif

@@ -34,8 +34,8 @@ printArray(const int array[], int lenOfArray){
 }
 
 int
-randomWithLimits(int lower, int upper){
-    int num = std::rand() % upper + lower;
+randomWithLimits(int lower, int upper){    
+    int num = std::rand() % (upper-lower+1) + lower;
     return num;
 }
 
@@ -72,20 +72,56 @@ medianOfArray(int array[], int len){
 }
 
 void
-randomWithLimits(char array[], int len, int lower, int upper){
-    for (int i = 0; i < len-1; i++){
-        array[i] = randomWithLimits(lower, upper);
+randomizeCString(char array[], int len, int lower, int upper){
+    int temp;
+    for (int i = 0; i < len; i++){
+        temp = randomWithLimits(lower, upper);
+        array[i] = temp;
     }
+    array[len] = '\0';
 }
 
 void
 readInputToCString(char array[], int len, int lower, int upper){
     int fill = 0;
-    char l = lower, u = upper;
+    char l = lower, u = upper, temp;
     std::cout << "Enter characters between " << l << " and " << u << ":" << std::endl;
-     
-    while (fill <= len){
-        
+    while (fill <= len-1){
+        std::cout << "Enter a single character: ";
+        std::cin >> temp;
+        temp = toupper(temp);
+        if (static_cast<int>(l) <= static_cast<int>(temp)
+         && static_cast<int>(temp) <= static_cast<int>(u)){
+            array[fill] = temp;
+            fill++;            
+        }else
+        {
+            std::cout << "That is not a valid character." << std::endl;
+        }
     }
-    
+    array[len] = '\0';
+}
+
+int 
+countOccurencesOfCharacter(char array[], int length, char chr){
+    chr = toupper(chr);
+    int count = 0;
+    for (int i = 0; i<length; i++){
+        if (array[i] == chr){
+            count++;
+        }
+    }
+    return count;
+}
+
+int
+meanGrades(int array[], int length)
+{
+    double meanGrade = 0;
+    for (int i = 0; i < length; i++)
+    {
+        meanGrade += array[i]*(i+1);
+    }
+    meanGrade /= length;
+    return meanGrade;
 }
