@@ -15,4 +15,9 @@ I used multiple files, but that should not be necessary.
 
 ## Practice 3:
 
-TBA!
+Functions and pointers! Wohoo! Made a cannon shooting game, which was fun.
+
+## Practice 4:
+
+Loads of functions and c-strings. Implemented an easy mastermind game.
+This was such a pain because of arrays and char type is a bitch!
