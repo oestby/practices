@@ -40,7 +40,7 @@ playMastermind()
     {
         randomizeCString(code, SIZE, 'A', 'A'+(LETTERS-1));
         std::cout << "Let us play a game of mastermind." << std::endl
-        << "Guess " << SIZE-1 << " letters between " << 'A' << "and " <<static_cast<char>('A'+(LETTERS-1)) << std::endl;
+        << "Guess " << SIZE << " letters between " << 'A' << " and " <<static_cast<char>('A'+(LETTERS-1)) << std::endl;
 
         while(tries && !win)
         {
