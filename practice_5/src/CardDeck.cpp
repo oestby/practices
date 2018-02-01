@@ -14,6 +14,7 @@ currentCardIndex(0)
             cards.push_back(Card(Rank(r), Suit(s)));
         }
     }
+    this->shuffle();
 }
 
 void
