@@ -1,7 +1,7 @@
 #ifndef CARD_DECK_HPP
 #define CARD_DECK_HPP
 
-#include <vector>
+#include<vector>
 
 #include "Card.hpp"
 
@@ -13,7 +13,7 @@ class CardDeck
         void print(void) const;
         void printShort(void) const;
         void shuffle(void);
-        void drawCard(void);
+        Card drawCard(void);
         
     private:
         std::vector<Card> cards;
