@@ -4,7 +4,7 @@
 #include <string>
 
 enum class Suit: int {CLUBS,DIAMONDS,HEARTS,SPADES};
-enum Rank: int {TWO=2,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,ACE};
+enum class Rank: int {TWO=2,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING,ACE};
 
 struct CardStruct
 {

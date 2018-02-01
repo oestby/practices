@@ -76,58 +76,6 @@ rankToString(Rank data)
     }
 }
 
-/*
-int
-rankToInt(Rank data)
-{
-    switch(data)
-    {
-        case Rank::TWO:
-        return 2;
-        break;
-        case Rank::THREE:
-        return 3;
-        break;
-        case Rank::FOUR:
-        return 4;
-        break;
-        case Rank::FIVE:
-        return 5;
-        break;
-        case Rank::SIX:
-        return 6;
-        break;
-        case Rank::SEVEN:
-        return 7;
-        break;
-        case Rank::EIGHT:
-        return 8;
-        break;
-        case Rank::NINE:
-        return 9;
-        break;
-        case Rank::TEN:
-        return 10;
-        break;
-        case Rank::JACK:
-        return 11;
-        break;
-        case Rank::QUEEN:
-        return 12;
-        break;
-        case Rank::KING:
-        return 13;
-        break;
-        case Rank::ACE:
-        return 14;
-        break;
-        default:
-        return 0;
-        break;
-    }
-}
-*/
-
 std::string
 toString(CardStruct c)
 {
@@ -139,7 +87,7 @@ std::string
 toStringShort(CardStruct c)
 {
     std::string suit = suitToString(c.s);
-    std::string msg = suit.substr(0,1) +std::to_string(c.r);
+    std::string msg = suit.substr(0,1) + std::to_string(static_cast<int>(c.r));
     return msg;
 }
 
@@ -166,7 +114,7 @@ std::string
 Card::toStringShort(void) const
 {
     std::string suit = suitToString(this->suit);
-    std::string msg = suit.substr(0,1) +std::to_string(this->rank);
+    std::string msg = suit.substr(0,1) +std::to_string(static_cast<int>(this->rank));
     return msg;
 }
 
