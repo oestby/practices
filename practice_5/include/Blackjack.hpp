@@ -6,6 +6,7 @@
 class Blackjack
 {
 public:
+    Blackjack();
     bool isAce(Card* const c) const;
     int getCardValue(Card* const c) const;
     int getPlayerCardValue(Card* const c) const;
@@ -20,4 +21,4 @@ private:
 
 };
 
-#endif 
+#endif
