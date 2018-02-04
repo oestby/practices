@@ -52,7 +52,7 @@ Blackjack::getPlayerCardValue(Card* const c) const
             std::cout << "Would you like this card to have a value of 11 or 1?" << std::endl
             << "Enter \"e\" for 11 or \"o\" for one:";
             std::cin >> choice;
-            if (choice != 'o' || choice != 'e')
+            if (choice != 'o' && choice != 'e')
             {
                 std::cout << "Not a valid option, try again!" << std::endl;
             }
@@ -62,7 +62,14 @@ Blackjack::getPlayerCardValue(Card* const c) const
         
     }
     else{
-        return static_cast<int>(c->getRank());
+        //TODO: Fix this thing that isn't returning the correct value for some weird reason...
+        if (static_cast<int>(c->getRank()) > 10)
+        {
+            return 10;
+        }
+        else{
+            return static_cast<int>(c->getRank());
+        }
     }
 }
 
@@ -80,7 +87,14 @@ Blackjack::getDealerCardValue(Card* const c) const
         }
     }
     else{
-        return static_cast<int>(c->getRank());
+        //TODO: Fix this too! WTF?
+        if (static_cast<int>(c->getRank()) > 10)
+        {
+            return 10;
+        }
+        else{
+            return static_cast<int>(c->getRank());
+        }
     }
 }
 
@@ -94,7 +108,7 @@ Blackjack::askPlayerDrawCard(void) const
         std::cout << "Yes or no? (y/n): ";
         std::cin >> choice;
 
-        if (choice != 'y'|| choice != 'n')
+        if (choice != 'y' && choice != 'n')
         {
             std::cout << "That is not a valid answer, try again." << std::endl;
         }
@@ -115,16 +129,17 @@ Blackjack::drawInitialCards(void)
     *c = this->deck.drawCard();
     dealerHand += this->getDealerCardValue(c);
     dealerCardsDrawn++;
+    std::cout << "The dealer drew another card." << std::endl << std::endl;
 
     *c = this->deck.drawCard();
+    playerHand++;
+    std::cout << "You drew a " << c->toString() << std::endl;
     playerHand+= this->getPlayerCardValue(c);
-    playerHand++;
-    std::cout << "You drew a " << c->toString() << std::endl;
 
     *c = this->deck.drawCard();
-    playerHand += this->getPlayerCardValue(c);
     playerHand++;
     std::cout << "You drew a " << c->toString() << std::endl;
+    playerHand += this->getPlayerCardValue(c);
 }
 
 void
@@ -139,16 +154,17 @@ Blackjack::playGame(void)
     while(this->askPlayerDrawCard())
     {
         *c = this->deck.drawCard();
-        playerHand += this->getPlayerCardValue(c);
         playerCardsDrawn++;
-        std::cout << "You drew a " << c->toString() << " and your hand is now "
-        << playerHand << " points!" << std::endl;
+        std::cout << "You drew a " << c->toString() << std::endl;
+        playerHand += this->getPlayerCardValue(c);
+        std::cout << "Your new handsize is " << playerHand << std::endl << std::endl;
         if (playerHand > 21) break;
         if (dealerHand > 17)
         {
             *c = this->deck.drawCard();
             dealerHand += this->getDealerCardValue(c);
             dealerCardsDrawn++;
+            std::cout << "The dealer drew another card." << std::endl << std::endl;
         }        
     }
     if (playerHand > 20)
@@ -157,8 +173,7 @@ Blackjack::playGame(void)
     }
     else{
         std::cout << "And we are done!" << std::endl
-        << "With a dealer value of " << dealerHand << " and a player value of "
-        << playerHand << std::endl;
+        << "With a dealer value of " << dealerHand << " and a player value of " << playerHand << std::endl;
         if (playerHand > dealerHand)
         {
             std::cout << "Congratulations! You win!" << std::endl;
