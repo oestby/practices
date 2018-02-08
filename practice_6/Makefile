@@ -1,10 +1,17 @@
 CPP = g++
 FLAGS = -std=c++17 -Wall
 INCLUDE = -I include
+SFML = -lsfml-graphics -lsfml-window -lsfml-system
 OBJS = bin/person.o bin/car.o
+GAME_OBJ = bin/cannon.o bin/utils.o bin/game.o bin/GameObjects.o
+
+all: main game
 
 main: bin/person.o bin/car.o
 	$(CPP) $(FLAGS) -o main main.cpp $(OBJS) $(INCLUDE)
+
+sfml-game: bin/cannon.o bin/utils.o bin/game.o bin/GameObjects.o
+	$(CPP) $(FLAGS) -o sfml-game game.cpp $(GAME_OBJ) $(INCLUDE) $(SFML)
 
 bin/person.o: 
 	$(CPP) $(FLAGS) -o bin/person.o -c src/person.cpp $(INCLUDE)
@@ -12,5 +19,17 @@ bin/person.o:
 bin/car.o:
 	$(CPP) $(FLAGS) -o bin/car.o -c src/car.cpp $(INCLUDE)
 
+bin/cannon.o:
+	$(CPP) $(FLAGS) -o bin/cannon.o -c src/car.cpp $(INCLUDE)
+
+bin/utils.o:
+	$(CPP) $(FLAGS) -o bin/utils.o -c src/utilities.cpp $(INCLUDE)
+
+bin/game.o:
+	$(CPP) $(FLAGS) -o bin/game.o -c src/game.cpp $(INCLUDE)
+
+bin/GameObjects.o:
+	$(CPP) $(FLAGS) -o bin/GameObjects.o -c src/GameObjects.cpp $(INCLUDE)
+
 clean:
-	rm main bin/*.o
+	rm main sfml-game bin/*.o
