@@ -37,6 +37,9 @@ int main () {
     bool gameOver = false;
 
     // create game objects here ****
+    Target target(5, 10);
+    Cannon cannon = Cannon();
+    std::vector<Cannonball> cannonballs;
 
 
     // main loop
@@ -53,6 +56,21 @@ int main () {
                 case sf::Keyboard::Escape:
                 case sf::Keyboard::Q:
                     window.close();
+                    break;
+                case sf::Keyboard::Up:
+                    cannon.incrementAngle();
+                    break;
+                case sf::Keyboard::Down:
+                    cannon.decrementAngle();
+                    break;
+                case sf::Keyboard::Left:
+                    cannon.decrementVelocity();
+                    break;
+                case sf::Keyboard::Right:
+                    cannon.incrementVelocity();
+                    break;
+                case sf::Keyboard::Space:
+                    cannonballs.push_back(cannon.shoot());
                     break;
                 default:
                     break;
@@ -72,19 +90,38 @@ int main () {
             default:
                 break;
             }
+            
         }
 
         // add checks for landed cannonballs here,
         // also check for cannonballs hitting the target
+        removeStoppedCannonballs(cannonballs);
+        for (auto it = cannonballs.begin(); it != cannonballs.end(); it++)
+        {
+            if (hitTarget(*it, target))
+                gameOver = true;
+        }
 
 
         // only update if game is not over
         if (!gameOver) {
             // update objects here
+            auto canIt = cannonballs.begin();
+            for (canIt; canIt != cannonballs.end(); canIt++)
+            {
+                canIt->update();
+            }
         }
 
         window.clear();
         // draw objects here
+        target.draw(window);
+        cannon.draw(window);
+        auto canIt = cannonballs.begin();
+        for (canIt; canIt != cannonballs.end(); canIt++)
+        {
+            canIt->draw(window);
+        }
 
 
         window.display();
