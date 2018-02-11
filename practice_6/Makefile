@@ -5,7 +5,7 @@ SFML = -lsfml-graphics -lsfml-window -lsfml-system
 OBJS = bin/person.o bin/car.o
 GAME_OBJ = bin/cannon.o bin/utils.o  bin/GameObjects.o
 
-all: main game
+all: main sfml-game
 
 main: bin/person.o bin/car.o
 	$(CPP) $(FLAGS) -o main main.cpp $(OBJS) $(INCLUDE)

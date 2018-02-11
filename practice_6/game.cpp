@@ -37,7 +37,7 @@ int main () {
     bool gameOver = false;
 
     // create game objects here ****
-    Target target(5, 10);
+    Target target(30 ,randomWithLimits(40, WIN_WIDTH));
     Cannon cannon = Cannon();
     std::vector<Cannonball> cannonballs;
 
@@ -101,24 +101,30 @@ int main () {
             if (hitTarget(*it, target))
                 gameOver = true;
         }
+        system("clear");
+        cannon.printVelocity();
+        cannon.printTheta();
 
 
         // only update if game is not over
         if (!gameOver) {
             // update objects here
-            auto canIt = cannonballs.begin();
-            for (canIt; canIt != cannonballs.end(); canIt++)
+            cannon.update();
+            for (auto canIt = cannonballs.begin(); canIt != cannonballs.end(); canIt++)
             {
                 canIt->update();
             }
+        }
+        else
+        {
+            break;
         }
 
         window.clear();
         // draw objects here
         target.draw(window);
         cannon.draw(window);
-        auto canIt = cannonballs.begin();
-        for (canIt; canIt != cannonballs.end(); canIt++)
+        for (auto canIt = cannonballs.begin(); canIt != cannonballs.end(); canIt++)
         {
             canIt->draw(window);
         }

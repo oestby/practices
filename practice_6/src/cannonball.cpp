@@ -110,5 +110,8 @@ void playTargetPractice(){
         tries--;
         std::cout << std::endl;
     }
-    delete theta_p, absVelocity_p, velocityX_p, velocityY_p;
+    delete theta_p;
+    delete absVelocity_p;
+    delete velocityX_p;
+    delete velocityY_p;
 }

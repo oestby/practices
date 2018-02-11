@@ -55,7 +55,8 @@ public:
 
     void incrementVelocity(double dvel = 5);   // increment firing velocity by dvelocity
     void decrementVelocity(double dvel = 5);   // decrement firing velocity by dvelocity
-
+    void printVelocity(void) const;
+    void printTheta(void) const;
     // shoot a cannonball, and return the cannonball
     Cannonball shoot();
 
@@ -82,7 +83,7 @@ class Cannonball {
 
 
 public:
-    Cannonball(double angle, double initial_velocity, double startPosX, double startPosY);
+    Cannonball(double angle, double initial_velocity, double startPosX_i, double startPosY_i);
 
     // get time in the air in seconds, as defined by clock
     double getAirTime() const;

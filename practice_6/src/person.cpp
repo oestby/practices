@@ -47,6 +47,7 @@ Person::operator==(const Person& rhs)
     if (this->name == rhs.getName()
     && this->email == rhs.getEmail())
         return true;
+    else return false;
 }
 
 std::ostream& operator<<(std::ostream& os, const Person& p)

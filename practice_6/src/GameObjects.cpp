@@ -2,6 +2,7 @@
 
 #include "cannonball.hpp"
 #include <cmath>
+#include <iostream>
 
 // implement all (member) functions in this file
 
@@ -23,8 +24,8 @@ double Cannonball::getAirTime() const {
 }
 
 //The shape initializer may cause errors.
-Cannonball::Cannonball(double angle, double initial_velocity, double startPosX, double startPosy):
-startPosX(startPosX), startPosY(startPosY), shape(this->size), clock()
+Cannonball::Cannonball(double angle, double initial_velocity, double startPosX_i, double startPosY_i):
+startPosX(startPosX_i), startPosY(startPosY_i), shape(this->size), clock()
 {   
     double initVelX = 0, initVelY = 0;
     getVelocityVector(angle, initial_velocity, &initVelX, &initVelY);
@@ -70,7 +71,7 @@ size(size), position(position)
 {
     this->shape = sf::RectangleShape(sf::Vector2f(this->size, this->size));
     this->shape.setFillColor(sf::Color::Red);
-    this->shape.setPosition(this->position, this->position);
+    this->shape.setPosition(this->position, 0);
 }
 
 void
@@ -91,6 +92,7 @@ Target::draw(sf::RenderWindow& window)
 */
 Cannon::Cannon()
 {
+    this->shape = sf::RectangleShape(sf::Vector2f(this->length, this->width));
     this->shape.setOrigin(this->width/2, 0);
     this->shape.setPosition(0,0);
 }
@@ -108,35 +110,35 @@ Cannon::draw(sf::RenderWindow& window)
 }
 
 void
-Cannon::decrementAngle(double dtheta = 1)
+Cannon::decrementAngle(double dtheta)
 {
     this->theta-=dtheta;
 }
 
 void
-Cannon::incrementAngle(double dtheta = 1)
+Cannon::incrementAngle(double dtheta)
 {
     this->theta+=dtheta;
 }
 
 void
-Cannon::incrementVelocity(double dvel = 5)
+Cannon::incrementVelocity(double dvel)
 {
     this->velocity+=dvel;
 }
 
 void
-Cannon::decrementVelocity(double dvel = 5)
+Cannon::decrementVelocity(double dvel)
 {
     this->velocity-=dvel;
 }
 
 double Cannon::getTipX() const {
-    return length*cos(degToRad(theta));
+    return length*cos(degToRad(theta)) - 10;
 }
 
 double Cannon::getTipY() const {
-    return length*sin(degToRad(theta));
+    return length*sin(degToRad(theta)) + this->width/2;
 }
 
 Cannonball
@@ -145,3 +147,17 @@ Cannon::shoot()
     Cannonball ball = Cannonball(this->theta, this->velocity, this->getTipX(), this->getTipY());
     return ball;
 }
+
+void
+Cannon::printTheta(void) const
+{
+    std::cout << "Theta: " << this->theta << std::endl;
+}
+
+void
+Cannon::printVelocity(void) const
+{
+    std::cout << "Vel: " << this->velocity << std::endl;
+}
+
+

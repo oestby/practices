@@ -11,8 +11,7 @@ randomWithLimits(int lower, int upper)
 void
 removeStoppedCannonballs(std::vector<Cannonball> v)
 {
-    auto it = v.begin();
-    for (it; it != v.end();)
+    for (auto it = v.begin(); it != v.end();)
     {
         if (it->hasLanded())
         {
