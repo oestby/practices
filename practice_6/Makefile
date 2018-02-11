@@ -29,4 +29,4 @@ bin/GameObjects.o:
 	$(CPP) $(FLAGS) -o bin/GameObjects.o -c src/GameObjects.cpp $(INCLUDE)
 
 clean:
-	rm main sfml-game bin/*.o
+	rm main game bin/*.o
