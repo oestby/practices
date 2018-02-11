@@ -8,8 +8,8 @@
 #include <vector>
 
 #include "GameObjects.h"
-#include "cannonball.h"
-#include "utilities.h"
+#include "cannonball.hpp"
+#include "utilities.hpp"
 
 int main () {
     srand(time(nullptr));
