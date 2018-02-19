@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "fib.hpp"
-
+#include "matrix.hpp"
 
 int main(void)
 {
