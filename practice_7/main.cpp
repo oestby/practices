@@ -11,7 +11,12 @@ int main(void)
     Matrix b(15);
     std::cout << b;
     Matrix c;
-    std::cout << c;
+    std::cout << c << std::endl;
+    Matrix e(a);
+    std::cout << e;
+    //c = a;
+    //std::cout << c;
+
     a.~Matrix();
 
     std::cin.get();
