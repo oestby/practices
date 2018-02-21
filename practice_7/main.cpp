@@ -5,7 +5,15 @@
 
 int main(void)
 {
-    createFibonacci();
+    //createFibonacci();
+    Matrix a(10, 10);
+    std::cout << a;
+    Matrix b(15);
+    std::cout << b;
+    Matrix c;
+    std::cout << c;
+    a.~Matrix();
+
+    std::cin.get();
     return 0;
 }
-
