@@ -5,10 +5,17 @@
 Matrix::Matrix(uint nRows, uint nColumns):
 rows(nRows), cols(nColumns)
 {
-    elements = new double*[nRows];
-    for (uint i = 0; i < nRows; i++)
+    if (nRows || nColumns)
     {
-        elements[i] = new double[nColumns];
+    	elements = new double*[nRows];
+    	for (uint i = 0; i < nRows; i++)
+    	{
+        	elements[i] = new double[nColumns];
+    	}
+    }
+    else
+    {
+        elements = nullptr;
     }
 }
 
@@ -37,26 +44,27 @@ Matrix(nRows, nRows)
 }
 
 Matrix::Matrix(const Matrix &m):
-rows(0), cols(0)
+Matrix(m.getHeight(), m.getWidth())
 {
     if (m.isValid())
     {
-        rows = m.getHeight();
-        cols = m.getWidth();
-        elements = m.elements;
-    }
-    else
-    {
-        elements = nullptr;
+        for (int i = 0; i < m.getHeight(); i++)
+        {
+            for (int j = 0; j < m.getWidth(); j++)
+            {
+                elements[i][j] = m.get(i,j);
+            }
+        }
     }
 }
 
-Matrix
-Matrix::operator=(Matrix m)
+Matrix&
+Matrix::operator=(const Matrix& m)
 {
-    std::swap(elements, m.elements);
-    this->rows = m.rows;
-    this->cols = m.cols;
+    Matrix n_m(m);
+    std::swap(elements, n_m.elements);
+    this->rows = n_m.rows;
+    this->cols = n_m.cols;
     return *this;
 }
 

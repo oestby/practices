@@ -12,7 +12,7 @@ public:
     Matrix(const Matrix &m);
     ~Matrix();
 
-    Matrix operator=(Matrix m);
+    Matrix& operator=(const Matrix& m);
     Matrix operator+=(Matrix m);
     Matrix operator+(Matrix m);
 
