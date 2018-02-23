@@ -1,5 +1,5 @@
 CPP = g++
-FLAGS = -std=c++17 -Wall
+FLAGS = -g -std=c++17 -Wall
 OBJS = bin/fib.o bin/matrix.o
 INCLUDE = -I include
 
@@ -14,5 +14,6 @@ bin/fib.o:
 bin/matrix.o:
 	$(CPP) $(FLAGS) -o bin/matrix.o -c src/matrix.cpp $(INCLUDE)
 
+.PHONY: clean
 clean:
 	rm main bin/*.o
