@@ -3,6 +3,8 @@ FLAGS = -std=c++17 -Wall
 OBJS = bin/fib.o bin/matrix.o
 INCLUDE = -I include
 
+default: clean main
+
 main: bin/fib.o bin/matrix.o
 	$(CPP) $(FLAGS) -o main main.cpp $(OBJS) $(INCLUDE)
 
