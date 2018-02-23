@@ -23,9 +23,19 @@ int main(void)
     std::cout << e;
     
     std::cout << "Assigning A to C" << std::endl;
-    //Assignment operator doesn't even work!
     c = a;
     std::cout << c << std::endl;
+
+    std::cout << "Fills C with 15" << std::endl;
+    c.fill(15);
+
+    std::cout << "E = A + C" << std::endl;
+    e = a + c;
+    std::cout << e;
+    std::cout << "E += C" << std::endl;
+    e += c;
+    std::cout << e;
+
 
     a.~Matrix();
     std::cout << "A is destroyed" << std::endl;
