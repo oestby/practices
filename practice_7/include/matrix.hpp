@@ -14,7 +14,9 @@ public:
 
     Matrix& operator=(const Matrix& m);
     Matrix operator+=(Matrix m);
+    Matrix operator-=(Matrix m);
     Matrix operator+(Matrix m);
+    Matrix operator-(Matrix m);
 
     double get(int row, int col) const;
     void set(int row, int col, double value);

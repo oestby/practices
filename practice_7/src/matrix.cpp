@@ -68,8 +68,7 @@ Matrix::operator=(const Matrix& m)
     return *this;
 }
 
-// Matrix c
-// c += a
+
 Matrix
 Matrix::operator+=(Matrix m)
 {
@@ -78,11 +77,38 @@ Matrix::operator+=(Matrix m)
     this->getHeight() == m.getHeight() &&
     this->getWidth() == m.getWidth())
     {
-        for (uint i = 0; i < rows; i++)
+        for (int i = 0; i < rows; i++)
         {
-            for (uint j = 0; j < cols; j++)
+            for (int j = 0; j < cols; j++)
             {
                 this->elements[i][j] += m.elements[i][j];
+            }
+        }
+    }
+    else
+    {
+        Matrix s;
+        std::swap(elements, s.elements);
+        this->rows = s.rows;
+        this->cols = s.cols;
+    }
+    return *this;
+
+}
+
+Matrix
+Matrix::operator-=(Matrix m)
+{
+    if (this->isValid() &&
+    m.isValid() &&
+    this->getHeight() == m.getHeight() &&
+    this->getWidth() == m.getWidth())
+    {
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                this->elements[i][j] -= m.elements[i][j];
             }
         }
     }
@@ -105,9 +131,9 @@ Matrix::operator+(Matrix m)
     this->getHeight() == m.getHeight() &&
     this->getWidth() == m.getWidth())
     {
-        for (uint i = 0; i < m.getHeight(); i++)
+        for (int i = 0; i < m.getHeight(); i++)
         {
-            for (uint j = 0; j < m.getWidth(); j++)
+            for (int j = 0; j < m.getWidth(); j++)
             {
                 m.elements[i][j] += this->elements[i][j];
             }
@@ -122,6 +148,55 @@ Matrix::operator+(Matrix m)
    
 }
 
+Matrix
+Matrix::operator-(Matrix m)
+{   
+    if(this->isValid() &&
+    m.isValid() &&
+    this->getHeight() == m.getHeight() &&
+    this->getWidth() == m.getWidth())
+    {
+        for (int i = 0; i < m.getHeight(); i++)
+        {
+            for (int j = 0; j < m.getWidth(); j++)
+            {
+                m.elements[i][j] -= this->elements[i][j];
+            }
+        }
+        return m;
+    }
+    else
+    {
+        Matrix s;
+        return s;
+    }
+   
+}
+
+Matrix
+Matrix::operator*(Matrix m)
+{
+    if(this->isValid() &&
+    m.isValid() &&
+    this->getHeight() == m.getHeight() &&
+    this->getWidth() == m.getWidth())
+    {
+        for (int i = 0; i < m.getHeight(); i++)
+        {
+            for (int j = 0; j < m.getWidth(); j++)
+            {
+                m.elements[i][j] *= this->elements[i][j];
+            }
+        }
+        return m;
+
+    }
+    else
+    {
+        Matrix s;
+        return s;
+    }
+}
 
 double
 Matrix::get(int row, int col) const
@@ -152,9 +227,9 @@ Matrix::fill(double num)
 {
     if (this->isValid())
     {
-        for (uint i = 0; i < this->getWidth(); i++)
+        for (int i = 0; i < this->getWidth(); i++)
         {
-            for (uint j = 0; j < this->getHeight(); i++)
+            for (int j = 0; j < this->getHeight(); j++)
             {
                 elements[i][j] = num;
             }
