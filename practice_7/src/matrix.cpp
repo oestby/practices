@@ -173,30 +173,6 @@ Matrix::operator-(Matrix m)
    
 }
 
-Matrix
-Matrix::operator*(Matrix m)
-{
-    if(this->isValid() &&
-    m.isValid() &&
-    this->getHeight() == m.getHeight() &&
-    this->getWidth() == m.getWidth())
-    {
-        for (int i = 0; i < m.getHeight(); i++)
-        {
-            for (int j = 0; j < m.getWidth(); j++)
-            {
-                m.elements[i][j] *= this->elements[i][j];
-            }
-        }
-        return m;
-
-    }
-    else
-    {
-        Matrix s;
-        return s;
-    }
-}
 
 double
 Matrix::get(int row, int col) const
