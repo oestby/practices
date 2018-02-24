@@ -1,6 +1,8 @@
-#include <map>
-
 #include "filestreams.hpp"
+
+#include <map> //Duhh..
+#include <sstream> //std::stringsream
+#include <algorithm> //std::remove_if
 
 typedef std::vector<std::string> strvec;
 
@@ -93,4 +95,53 @@ countCharacterOccurances(std::string filename)
         amount_of_characters += it->second;
     }
     std::cout << "\nTotal number of characters: " << amount_of_characters << std::endl;
+}
+
+void
+wordStatistics(std::string filename)
+{
+    strvec words;
+    int number_of_lines, number_of_words;
+    std::string longest_word;
+    std::map<std::string, int> word_occurances;
+    strvec lines = readSingleLines(filename);
+    number_of_lines = lines.size();
+
+    std::string temp;
+    for (std::string line: lines)
+    {
+        std::stringstream ss(line);
+        while (ss>>temp)
+        {
+            //Removes punctuation from the string.
+            temp.erase(std::remove_if(temp.begin(), temp.end(), ispunct), temp.end());
+            for (char c: temp)
+            {
+                c = tolower(c);
+            }
+            words.push_back(temp);
+        }
+    }
+
+    number_of_words = words.size();
+    for (std::string wrd: words)
+    {
+        if(!word_occurances[wrd])
+            word_occurances[wrd] = 1;
+        else
+            word_occurances[wrd] += 1;
+        if(wrd.size() > longest_word.size())
+            longest_word = wrd;
+    }
+
+    std::cout << "Word statistics:" << std::endl
+    << "The longest word:" << longest_word << std::endl
+    << "Number of words: " << number_of_words << std::endl
+    << "Number of lines: " << number_of_lines << std::endl
+    << "Word occurannce:" << std::endl;
+    for (auto it = word_occurances.cbegin(); it != word_occurances.cend(); it++)
+    {
+        std::cout << it->first << ": " << it->second << std::endl;
+    }
+
 }
