@@ -15,7 +15,6 @@ addCourses(CourseCatalog& cc)
 
 int main(int argc, char** argv)
 {
-    std::string file_1, file_2;
     switch(argc)
     {
         case 2:
@@ -41,6 +40,7 @@ int main(int argc, char** argv)
     CourseCatalog second("test.txt");
     std::cout << second;
 
-    
+    wordStatistics("placeholder.txt");
+
     return 0;
 }
