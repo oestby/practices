@@ -12,8 +12,10 @@ class Minesweeper {
 private:
     // Legg til de medlemsvariablene og hjelpefunksjonene du trenger
     int width, height, mines;
+    bool game_over = false;
     Tile** tiles;
     void setMines(void);
+    void openAdjacent(int row, int col);
 
 public:
     Minesweeper(int width, int height, int mines);
@@ -25,6 +27,8 @@ public:
     bool isTileMine(int row, int col) const;
 
     void openTile(int row, int col);
+
+    void printBoard() const;
 
     int numAdjacentMines(int row, int col) const;
 

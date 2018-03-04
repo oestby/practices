@@ -29,11 +29,12 @@ int main() {
     srand(time(nullptr));
 
     sf::Font font;
-    if (!font.loadFromFile("sansation.tff")){
+    
+    if (!font.loadFromFile("sansation.ttf")){
         cout << "Fant ikke skrifttypen 'sansation.ttf'" << endl;
         exit(0);
     }
-
+    
 
     cout << "Skriv inn høyde, bredde og antall miner: ";
     int height = 20, width = 30, mines = 40;
@@ -103,13 +104,13 @@ int main() {
 
                     if (game->isTileMine(row, col)) {
                         text.setString("X");
-                        text.setFillColor(mine_color);
+                        text.setColor(mine_color);
                     }
                     else {
                         int num_adjacent_mines = game->numAdjacentMines(row, col);
                         if(num_adjacent_mines == 0) continue; // Ikke tegn nuller
                         text.setString(to_string(num_adjacent_mines));
-                        text.setFillColor(number_colors[num_adjacent_mines]);
+                        text.setColor(number_colors[num_adjacent_mines]);
                     }
 
                     text.setFont(font);
