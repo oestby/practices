@@ -31,12 +31,12 @@ int main() {
     sf::Font font;
     
     if (!font.loadFromFile("sansation.ttf")){
-        cout << "Fant ikke skrifttypen 'sansation.ttf'" << endl;
+        cout << "Could not find font 'sansation.ttf'" << endl;
         exit(0);
     }
     
 
-    cout << "Skriv inn høyde, bredde og antall miner: ";
+    cout << "Enter height, width and number of mines: ";
     int height = 20, width = 30, mines = 40;
     cin >> height >> width >> mines;
 
@@ -44,8 +44,8 @@ int main() {
 
     sf::RenderWindow window(sf::VideoMode(width * tile_size, height * tile_size), "Minesweeper", sf::Style::Close);
 
-    cout << "Velkommen til Minesveiper!" << endl;
-    cout << "Klikk en rute for å åpne den. Trykk ESC eller Q for å avslutte, eller MELLOMROM for å starte på nytt" << endl;
+    cout << "Welcome to minesweeper!" << endl;
+    cout << "Click on a tile to open it. Press ESC or Q to quit, or SPACE to start over." << endl;
 
     window.setFramerateLimit(60);
 
@@ -78,9 +78,9 @@ int main() {
                     if (game->isGameOver()) {
                         if (game->isGameWon())
                         {
-                            
+
                         }
-                        cout << "SPILLET ER OVER! Trykk ESC eller Q for å avslutte, eller MELLOMROM for å starte på nytt" << endl;
+                        cout << "GAME OVER! Press ESC or Q to quit, or SPACE to start over." << endl;
                     }
                 }
                 if (event.mouseButton.button == sf::Mouse::Right && !game->isGameOver())
