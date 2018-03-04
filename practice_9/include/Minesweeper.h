@@ -4,8 +4,8 @@
 
 struct Tile
 {
-    bool open, mine;
-    Tile(): open(false), mine(false) {}
+    bool open, mine, flag;
+    Tile(): open(false), mine(false), flag(false) {}
 };
 
 class Minesweeper {
@@ -27,6 +27,7 @@ public:
     bool isTileMine(int row, int col) const;
 
     void openTile(int row, int col);
+    void toggleFlag(int row, int col);
 
     void printBoard() const;
 

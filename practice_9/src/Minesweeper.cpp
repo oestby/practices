@@ -66,13 +66,12 @@ Minesweeper::openTile(int row, int col)
 int
 Minesweeper::numAdjacentMines(int row, int col) const 
 {
-    //TODO: Fix this!
     int adj_mines = 0;
-    for (int i = row - 1; i < row + 1; i++)
+    for (int i = row - 1; i <= row + 1; i++)
     {
-        for (int j = col - 1; j < col + 1; j++)
+        for (int j = col - 1; j <= col + 1; j++)
         {
-            if (i >= 0 && j >= 0 && i<=width && j <= height)
+            if (i >= 0 && j >= 0 && i < width && j < height)
             {
                 if (tiles[i][j].mine) adj_mines++;
             }
@@ -85,13 +84,13 @@ Minesweeper::numAdjacentMines(int row, int col) const
 void
 Minesweeper::openAdjacent(int row, int col)
 {
-    //TODO: Not working correctly!
-    for (int i = row -1; i < row + 1; i++)
+    for (int i = row -1; i <= row + 1; i++)
     {
-        for (int j = col - 1; j < col + 1; j++)
+        for (int j = col - 1; j <= col + 1; j++)
         {
-            if (i >= 0 && i < width && j >= 0 && j < height)
+            if (i >= 0 && i < width && j >= 0 && j < height && (i == row || j == col))
             {
+                //std::cout << i << ", " << j << std::endl;
                 if (!tiles[i][j].mine && !tiles[i][j].open)
                 {
                     tiles[i][j].open = true;
@@ -100,40 +99,6 @@ Minesweeper::openAdjacent(int row, int col)
             }
         }
     }
-    /*
-    if (row + 1 < width)
-    {
-        if (!tiles[row + 1][col].mine && !tiles[row + 1][col].open)
-        {
-            tiles[row + 1][col].open = true;
-            openAdjacent(row + 1, col);
-        }
-    }
-    if (row - 1 > 0)
-    {
-        if (!tiles[row - 1][col].mine && !tiles[row - 1][col].open)
-        {
-            tiles[row - 1][col].open = true;
-            openAdjacent(row - 1, col);
-        }
-    }
-    if (col + 1 < height)
-    {
-        if (!tiles[row][col + 1].mine && !tiles[row][col + 1].open)
-        {
-            tiles[row][col + 1].open = true;
-            openAdjacent(row, col + 1);
-        }
-    }
-    if (col - 1 > 0)
-    {
-        if (!tiles[row][col - 1].mine && !tiles[row][col - 1].open)
-        {
-            tiles[row][col - 1].open = true;
-            openAdjacent(row, col - 1);
-        }
-    }
-    */
 }
 
 void
@@ -168,3 +133,10 @@ Minesweeper::printBoard() const
     }
 }
 
+void
+Minesweeper::toggleFlag(int row, int col)
+{
+    if (tiles[row][col].flag) tiles[row][col].flag = false;
+    else tiles[row][col].flag = true;
+
+}

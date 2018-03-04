@@ -79,6 +79,14 @@ int main() {
                         cout << "SPILLET ER OVER! Trykk ESC eller Q for å avslutte, eller MELLOMROM for å starte på nytt" << endl;
                     }
                 }
+                if (event.mouseButton.button == sf::Mouse::Right && !game->isGameOver())
+                {
+                    int row = event.mouseButton.y / tile_size;
+                    int col = event.mouseButton.x / tile_size;
+
+                    game->toggleFlag(row, col);
+
+                }
                 break;
             }
         }
@@ -121,6 +129,16 @@ int main() {
                     text.setPosition(tile_x + tile_size / 2.0, tile_y + tile_size / 2.0);
 
                     window.draw(text);
+                }
+                else if (!game->isGameOver())
+                {
+                    // TODO: Draw !s here.
+                    /*
+                    sf::Text text;
+                    text.setStyle(sf::Text::Bold);
+                    text.setCharacterSize(tile_size / 2.0);
+                    */
+
                 }
             }
         }
