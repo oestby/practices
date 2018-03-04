@@ -22,9 +22,11 @@ public:
     ~Minesweeper();
 
     bool isGameOver() const;
+    bool isGameWon() const;
 
     bool isTileOpen(int row, int col) const;
     bool isTileMine(int row, int col) const;
+    bool isTileFlagged(int row, int col) const;
 
     void openTile(int row, int col);
     void toggleFlag(int row, int col);

@@ -32,7 +32,7 @@ Minesweeper::~Minesweeper() {
 bool
 Minesweeper::isGameOver() const 
 {
-    return game_over;
+    return (game_over || isGameWon());
 }
 
 bool
@@ -45,6 +45,12 @@ bool
 Minesweeper::isTileMine(int row, int col) const 
 {
     return tiles[row][col].mine;
+}
+
+bool
+Minesweeper::isTileFlagged(int row, int col) const
+{
+    return tiles[row][col].flag;
 }
 
 void
@@ -139,4 +145,18 @@ Minesweeper::toggleFlag(int row, int col)
     if (tiles[row][col].flag) tiles[row][col].flag = false;
     else tiles[row][col].flag = true;
 
+}
+
+bool
+Minesweeper::isGameWon() const
+{
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            if (tiles[i][j].mine && !tiles[i][j].flag)
+                return false;
+        }
+    }
+    return true;
 }
