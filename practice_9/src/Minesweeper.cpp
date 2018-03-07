@@ -3,7 +3,7 @@
 #include <iostream>
 
 Minesweeper::Minesweeper(int width, int height, int mines):
-width(width), height(height), mines(mines)
+width(width), height(height), mines(mines), flags(0), available_flags(mines)
  {
     if (width && height)
     {
@@ -32,7 +32,7 @@ Minesweeper::~Minesweeper() {
 bool
 Minesweeper::isGameOver() const 
 {
-    return (game_over || isGameWon());
+    return game_over;
 }
 
 bool
@@ -142,8 +142,23 @@ Minesweeper::printBoard() const
 void
 Minesweeper::toggleFlag(int row, int col)
 {
-    if (tiles[row][col].flag) tiles[row][col].flag = false;
-    else tiles[row][col].flag = true;
+    if (tiles[row][col].flag)
+    {
+        tiles[row][col].flag = false;
+        flags--;
+    } 
+    else 
+    {
+        if (flags >= available_flags)
+        {
+            std::cout << "You have used too many flags!" << std::endl;
+        }
+        else
+        {
+            tiles[row][col].flag = true;
+            flags++;
+        }
+    }
 
 }
 

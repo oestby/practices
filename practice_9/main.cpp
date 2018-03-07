@@ -41,7 +41,8 @@ int main() {
     cin >> height >> width >> mines;
 
     Minesweeper* game = new Minesweeper(width, height, mines);
-
+    int screenWidth = width * tile_size;
+    int screenHeight = height * tile_size;
     sf::RenderWindow window(sf::VideoMode(width * tile_size, height * tile_size), "Minesweeper", sf::Style::Close);
 
     cout << "Welcome to minesweeper!" << endl;
@@ -69,30 +70,45 @@ int main() {
                 }
                 break;
             case sf::Event::MouseButtonPressed:
-                if (event.mouseButton.button == sf::Mouse::Left && !game->isGameOver()) {
-                    int row = event.mouseButton.y / tile_size;
-                    int col = event.mouseButton.x / tile_size;
-
-                    game->openTile(row, col);
-
-                    if (game->isGameOver()) {
-                        if (game->isGameWon())
-                        {
-
-                        }
-                        cout << "GAME OVER! Press ESC or Q to quit, or SPACE to start over." << endl;
-                    }
-                }
-                if (event.mouseButton.button == sf::Mouse::Right && !game->isGameOver())
+                if (event.mouseButton.button == sf::Mouse::Right && (!game->isGameOver() && !game->isGameWon()))
                 {
                     int row = event.mouseButton.y / tile_size;
                     int col = event.mouseButton.x / tile_size;
 
                     game->toggleFlag(row, col);
 
+                    if (game->isGameWon())
+                    {
+                        std::cout << "YOU WON! Press ESC or Q to quit, or SPACE to start over." << std::endl;
+                    }
+
+                }
+                else if (event.mouseButton.button == sf::Mouse::Left && (!game->isGameOver()&&!game->isGameWon())) {
+                    int row = event.mouseButton.y / tile_size;
+                    int col = event.mouseButton.x / tile_size;
+
+                    game->openTile(row, col);
+
+                    if (game->isGameOver()) {
+
+                        cout << "GAME OVER! Press ESC or Q to quit, or SPACE to start over." << endl;
+                    }
                 }
                 break;
             }
+        }
+        if (game->isGameWon())
+        {
+            //TODO: This won't draw!
+            //Might need to draw it inside a rectangle.
+            sf::Text winText;
+            winText.setStyle(sf::Text::Bold);
+            winText.setCharacterSize(tile_size * 5);
+            winText.setString("Congratulations, you won!");
+            winText.setColor(sf::Color::Magenta);
+            winText.setPosition(screenWidth / 2, screenHeight / 2);
+            window.draw(winText);
+            
         }
 
         window.clear();
@@ -136,7 +152,6 @@ int main() {
                 }
                 else if (!game->isGameOver())
                 {
-                    // TODO: Draw !s here.
                     sf::Text text;
                     text.setStyle(sf::Text::Bold);
                     text.setCharacterSize(tile_size / 2.0);

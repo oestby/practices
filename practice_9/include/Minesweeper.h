@@ -16,6 +16,8 @@ private:
     Tile** tiles;
     void setMines(void);
     void openAdjacent(int row, int col);
+    int flags;
+    const int available_flags;
 
 public:
     Minesweeper(int width, int height, int mines);
