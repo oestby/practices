@@ -6,5 +6,6 @@
 #include "Graphics/rectangle.hpp"
 #include "Graphics/canvas.hpp"
 #include "Graphics/Image.h"
+#include "Graphics/circle.hpp"
 
 #endif

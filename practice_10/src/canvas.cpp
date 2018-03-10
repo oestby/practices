@@ -1,4 +1,4 @@
-#include "canvas.hpp"
+#include "graphics.hpp"
 
 void Canvas::addShape(Shape* shape) {
     shapes.push_back(shape);
