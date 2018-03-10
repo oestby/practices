@@ -3,8 +3,13 @@
 
 #include "Image.h"
 
-//Abstact base class for many drawable objects.
+//A simple struct for organizing points.
+struct Point {
+    int x, y;
+    Point(int x, int y): x(x), y(y) {}
+};
 
+//Abstact base class for many drawable objects.
 class Shape {
 public:
     Shape(const Color& color): 

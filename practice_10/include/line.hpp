@@ -4,11 +4,6 @@
 #include "shape.hpp"
 
 class Shape;
-//A simple struct for organizing points.
-struct Point {
-    int x, y;
-    Point(int x, int y): x(x), y(y) {}
-};
 
 class Line: public Shape {
 public:

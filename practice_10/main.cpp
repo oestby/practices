@@ -54,18 +54,22 @@ void testVectors(){
     std::cout << product << std::endl;
 }
 
-int main() {
-
+void testImageStuff() {
     Image test(250, 250);
     Color col(193,84,193);
     test.fill(col);
-    Point start(0,0);
-    Point end(100, 50);
-    Color line_col(200,200,200);
-    Line line(start, end, line_col);
+
+    Line line(Point(0,0), Point(100, 50), Color(200,200,200));
     line.draw(test);
-    Line line_2(Point(0,0), Point(100,200), line_col);
+    Line line_2(Point(0,0), Point(100,200), Color(200,200,200));
     line_2.draw(test);
+    
+    
     saveImage(test, "test.bmp");
+}
+
+
+int main() {
+    testImageStuff();
     return 0;
 }
