@@ -97,22 +97,8 @@ int main() {
                 break;
             }
         }
-        if (game->isGameWon())
-        {
-            //TODO: This won't draw!
-            //Might need to draw it inside a rectangle.
-            sf::Text winText;
-            winText.setStyle(sf::Text::Bold);
-            winText.setCharacterSize(tile_size * 5);
-            winText.setString("Congratulations, you won!");
-            winText.setColor(sf::Color::Magenta);
-            winText.setPosition(screenWidth / 2, screenHeight / 2);
-            window.draw(winText);
-            
-        }
-
+        
         window.clear();
-
 
         for(int row = 0; row < height; ++row) {
             for(int col = 0; col < width; ++col) {
@@ -171,6 +157,26 @@ int main() {
                     window.draw(text);
                 }
             }
+        }
+
+        if (game->isGameWon())
+        {
+            //TODO: This won't draw!
+            //Might need to draw it inside a rectangle.
+            sf::Text winText;
+            winText.setStyle(sf::Text::Bold);
+            winText.setCharacterSize(screenWidth / 10);
+            winText.setString("You won!");
+            winText.setColor(sf::Color::Red);
+            winText.setFont(font);
+
+            sf::FloatRect message = winText.getLocalBounds();
+            winText.setOrigin(message.left + message.width / 2,
+                              message.top + message.height / 2 );
+            winText.setPosition(screenWidth / 2, screenHeight / 2);
+
+            window.draw(winText);
+            //window.draw(message);
         }
 
         window.display();
