@@ -1,7 +1,7 @@
 #include <iostream>
 #include "matrix.hpp"
 #include "vector.hpp"
-
+#include "Image.h"
 void testVectors(){
         //Creates matrix A and fills it.
     Matrix A(10, 3);
@@ -54,6 +54,9 @@ void testVectors(){
 
 int main() {
 
-
+    Image test(150, 150);
+    Color col(193,84,193);
+    test.fill(col);
+    saveImage(test, "test.bmp");
     return 0;
 }
