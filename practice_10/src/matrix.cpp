@@ -128,15 +128,15 @@ Matrix
 Matrix::operator*(Matrix m)
 {
     if (isValid() && m.isValid() && 
-        getHeight() == m.getWidth())
+        getWidth() == m.getHeight())
     {
-        Matrix temp(m.getHeight(), getWidth());
+        Matrix temp(getHeight(), m.getWidth());
         for (int i = 0; i < temp.getHeight(); i++)
         {
-            for (int j = 0; j <temp.getWidth(); j++)
+            for (int j = 0; j < temp.getWidth(); j++)
             {
                 double sum = 0;
-                for (int k = 0; k < getHeight(); k++)
+                for (int k = 0; k < getWidth(); k++)
                 {
                     sum += get(i,k) * m.get(k,j);
                 }
