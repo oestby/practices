@@ -26,3 +26,16 @@ double Vector::dot(const Vector& rhs) const {
         return nan("");
     }
 }
+
+double Vector::lengthSquared(void) const {
+    if (!isValid()) return nan("");
+    double sum;
+    for (int i = 0; i < getHeight(); i++) {
+        sum += get(i);
+    }
+    return sum;
+}
+
+double Vector::length(void) const {
+    return sqrt(lengthSquared());
+}

@@ -10,8 +10,8 @@ class Vector: public Matrix {
         Vector(const Matrix& other);
         
         double dot(const Vector& rhs) const;
-        double lengtSquared() const;
-        double length() const;
+        double lengthSquared(void) const;
+        double length(void) const;
 
     private:
 
