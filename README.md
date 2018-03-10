@@ -33,3 +33,9 @@ Dynamic memory and Matrices. Fun little project to keep building on!
 
 ## Practice 8:
 Filestreams, maps and other streams.
+
+## Practice 9:
+Creating a minesweeper game in SFML
+
+## Pracitce 10:
+Polymorphism and inheritance. Creating some classes to draw in a BMP file.
