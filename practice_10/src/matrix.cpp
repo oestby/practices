@@ -176,13 +176,13 @@ Matrix::operator-(Matrix m)
 
 
 double
-Matrix::get(int row, int col) const
+Matrix::get(int row, int col = 0) const
 {
     return elements[row][col];
 }
 
 void
-Matrix::set(int row, int col, double value)
+Matrix::set(double value, int row, int col = 0)
 {
     elements[row][col] = value;
 }

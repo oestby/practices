@@ -18,8 +18,8 @@ public:
     Matrix operator+(Matrix m);
     Matrix operator-(Matrix m);
 
-    double get(int row, int col) const;
-    void set(int row, int col, double value);
+    double get(int row, int col = 0) const;
+    void set(double value, int row, int col = 0);
 
     // Height is rows and width is columns.
     int getHeight(void) const;
@@ -27,11 +27,7 @@ public:
 
     void fill(double num = 0);
 
-    bool isValid(void) const
-    {
-        if (elements) return true;
-        else return false;
-    }
+    bool isValid(void) const { return static_cast<bool>(elements); }
     
 private:
     int rows, cols;
