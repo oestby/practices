@@ -1,10 +1,13 @@
 CPP = g++
 FLAGS = -g -std=c++17 -Wall
 INCLUDE = -I include
-OBJS = bin/matrix.o bin/vector.o bin/imageIO.o bin/image.o
+OBJS = bin/matrix.o bin/vector.o bin/imageIO.o bin/image.o bin/line.o
 
-main: main.cpp bin/matrix.o bin/vector.o bin/image.o bin/imageIO.o
+main: main.cpp matrices images
 	$(CPP) $(FLAGS) -o main main.cpp $(OBJS) $(INCLUDE)
+
+matrices: bin/matrix.o bin/vector.o
+images: bin/image.o bin/imageIO.o bin/line.o
 
 bin/matrix.o: src/matrix.cpp
 	$(CPP) $(FLAGS) -o bin/matrix.o -c src/matrix.cpp $(INCLUDE)
@@ -17,6 +20,9 @@ bin/imageIO.o: src/ImageIO.cpp
 
 bin/image.o: src/Image.cpp
 	$(CPP) $(FLAGS) -o bin/image.o -c src/Image.cpp $(INCLUDE)
+
+bin/line.o: src/line.cpp
+	$(CPP) $(FLAGS) -o bin/line.o -c src/line.cpp $(INCLUDE)
 
 .PHONY: clean
 
