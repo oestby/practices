@@ -12,11 +12,11 @@ bin/matrix.o: src/matrix.cpp
 bin/vector.o: src/vector.cpp bin/matrix.o
 	$(CPP) $(FLAGS) -o bin/vector.o -c src/vector.cpp $(INCLUDE)
 
-bin/imageIO.o: src/imageIO.cpp
-	$(CPP) $(FLAGS) -o bin/imageIO.o -c src/imageIO.cpp $(INCLUDE)
+bin/imageIO.o: src/ImageIO.cpp
+	$(CPP) $(FLAGS) -o bin/imageIO.o -c src/ImageIO.cpp $(INCLUDE)
 
-bin/image.o: src/image.cpp
-	$(CPP) $(FLAGS) -o bin/image.o -c src/image.cpp $(INCLUDE)
+bin/image.o: src/Image.cpp
+	$(CPP) $(FLAGS) -o bin/image.o -c src/Image.cpp $(INCLUDE)
 
 .PHONY: clean
 
