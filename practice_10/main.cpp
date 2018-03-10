@@ -59,13 +59,14 @@ void testImageStuff() {
     test.fill(col);
 
     Line line(Point(0,0), Point(100, 50), Color(200,200,200));
-    line.draw(test);
     Line line_2(Point(0,0), Point(100,200), Color(200,200,200));
-    line_2.draw(test);
-    
     Rectangle rect(Point(10,10), Point(50,50), Color(255, 0, 0));
-    rect.draw(test);
 
+    Canvas canvas;
+    canvas.addShape(&line);
+    canvas.addShape(&line_2);
+    canvas.addShape(&rect);
+    canvas.rasterizeTo(test);
     saveImage(test, "test.bmp");
 }
 
