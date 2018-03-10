@@ -1,9 +1,7 @@
 #include <iostream>
 #include "matrix.hpp"
 #include "vector.hpp"
-#include "Image.h"
-#include "line.hpp"
-#include "rectangle.hpp"
+#include "graphics.hpp"
 
 void testVectors(){
         //Creates matrix A and fills it.
