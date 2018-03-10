@@ -200,6 +200,19 @@ Matrix::getWidth(void) const
 }
 
 void
+Matrix::invalidate(void)
+{
+    if (elements)
+    {
+        for (int i = 0; i < rows; i++)
+        {
+            delete[] elements[i];
+        }
+        delete[] elements;
+    }
+}
+
+void
 Matrix::fill(double num)
 {
     if (this->isValid())

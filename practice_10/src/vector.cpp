@@ -1,22 +1,21 @@
 #include "vector.hpp"
 
 Vector::Vector(int nRows):
-Matrix(nRows)
+Matrix(nRows, 1)
 {
     //Empty
 }
 
 Vector::Vector(const Matrix& other):
-Matrix(other.getWidth())
+Matrix(other.getHeight(), 1)
 {
-    if (other.getHeight() == 1 && other.getWidth()) {
+    if (other.getWidth() == 1 && other.getHeight()) {
         for (int i = 0; i < other.getHeight(); i++) {
-            for (int j = 0; i < other.getWidth(); j++) {
-
-            }
+            this->set(i, other.get(i));
         }
     }
-    else {
-        
+    else
+    {
+        this->invalidate();
     }
 }

@@ -28,6 +28,8 @@ public:
     void fill(double num = 0);
 
     bool isValid(void) const { return static_cast<bool>(elements); }
+
+    void invalidate(void);
     
 private:
     int rows, cols;
