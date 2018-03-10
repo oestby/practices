@@ -1,7 +1,7 @@
 CPP = g++
 FLAGS = -g -std=c++17 -Wall
 INCLUDE = -I include
-OBJS = bin/matrix.o
+OBJS = bin/matrix.o bin/vector.o
 
 main: main.cpp bin/matrix.o bin/vector.o
 	$(CPP) $(FLAGS) -o main main.cpp $(OBJS) $(INCLUDE)

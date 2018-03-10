@@ -13,3 +13,16 @@ Matrix(other)
         this->invalidate();
     }
 }
+
+double Vector::dot(const Vector& rhs) const {
+    double sum = 0;
+    if (rhs.getHeight() == getHeight()) {
+        for (int i = 0; i < getHeight(); i++) {
+            sum += get(i) * rhs.get(i);
+        }
+        return sum;
+    }
+    else {
+        return nan("");
+    }
+}
