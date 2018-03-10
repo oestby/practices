@@ -2,9 +2,8 @@
 #include "matrix.hpp"
 #include "vector.hpp"
 
-int main() {
-
-    //Creates matrix A and fills it.
+void testVectors(){
+        //Creates matrix A and fills it.
     Matrix A(10, 3);
     A.fill(10);
     std::cout << A << std::endl;
@@ -51,6 +50,11 @@ int main() {
 
     std::cout << "A.d = " << std::endl;
     std::cout << product << std::endl;
+}
+
+int main() {
+
+
 
     return 0;
 }
