@@ -2,6 +2,8 @@
 #include "matrix.hpp"
 #include "vector.hpp"
 #include "Image.h"
+#include "line.hpp"
+
 void testVectors(){
         //Creates matrix A and fills it.
     Matrix A(10, 3);
@@ -54,9 +56,16 @@ void testVectors(){
 
 int main() {
 
-    Image test(150, 150);
+    Image test(250, 250);
     Color col(193,84,193);
     test.fill(col);
+    Point start(0,0);
+    Point end(100, 50);
+    Color line_col(200,200,200);
+    Line line(start, end, line_col);
+    line.draw(test);
+    Line line_2(Point(0,0), Point(100,200), line_col);
+    line_2.draw(test);
     saveImage(test, "test.bmp");
     return 0;
 }

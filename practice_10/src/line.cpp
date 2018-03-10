@@ -1,8 +1,9 @@
 #include "line.hpp"
 #include <algorithm>
+#include <iostream>
 
 Line::Line(const Point& start, const Point& end, const Color& color):
-start(start), end(end), Shape(color)
+Shape(color), start(start.x, start.y), end(end.x, end.y)
 {
     //Swaps start and end point 
     if (start.x > end.x) {
@@ -13,9 +14,19 @@ start(start), end(end), Shape(color)
 }
 
 void Line::draw(Image& img) {
-    for (int x = start.x; x < end.x; x++) {
-        int f_y = (end.y - start.y)/(end.x - start.x) * (x - start.x) + start.y;
-        img.setPixelColor(x, f_y, getColor());
+    if (static_cast<float>((end.y - start.y))/(end.x - start.x) < 1) {
+        int y = 0;
+        for (int x = start.x; x < end.x; x++) {
+            y = static_cast<float>((end.y - start.y))/(end.x - start.x) * (x - start.x) + start.y;
+            img.setPixelColor(x, y, getColor());
+        }
+    }else
+    {
+        int x = 0;
+        for (int y = start.y; y < end.y; y++) {
+            x = static_cast<float>(end.x - start.x)/(end.y - start.y) * (y - start.y) + start.x;
+            img.setPixelColor(x, y, getColor());
+        }
     }
 
 }
