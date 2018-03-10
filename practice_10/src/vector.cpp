@@ -7,15 +7,9 @@ Matrix(nRows, 1)
 }
 
 Vector::Vector(const Matrix& other):
-Matrix(other.getHeight(), 1)
+Matrix(other)
 {
-    if (other.getWidth() == 1 && other.getHeight()) {
-        for (int i = 0; i < other.getHeight(); i++) {
-            this->set(i, other.get(i));
-        }
-    }
-    else
-    {
+    if (!(other.getWidth() == 1 && other.getHeight())) {
         this->invalidate();
     }
 }
