@@ -8,40 +8,54 @@
  * all the functions in this file.                   *
  *****************************************************/
 
-Image::Image( int width, int height ) {
-   /* Enter your code here */
+Image::Image( int width, int height ):
+width(width), height(height)
+{
+    data = new Pixel[width * height];
 }
 
 Image::~Image()  {
-   /* Enter your code here */
+    delete[] data;
+    data = nullptr;
 }
 
 int Image::getWidth() const {
-   /* Enter your code here */
-   return 0;
+    return width;
 }
 int Image::getHeight() const  {
-   /* Enter your code here */
-   return 0;
+    return height;
 }
 
 const Pixel * Image::getScanLine(int line) const  {
-   /* Enter your code here */
-   return nullptr;
+    if (line < height) {
+        return &data[line * width];
+    }
+    else { 
+        return nullptr;
+    }
 }
 Pixel * Image::getScanLine(int line) {
-   /* Enter your code here */
-   return nullptr;
+    if (line < height) {
+       return &data[line * width];
+    } 
+    else{
+        return nullptr;
+    }
 }
 
 Color Image::getPixelColor( int x, int y ) const {
-   /* Enter your code here */
-   return Color();
+    Color temp = data[y * width + x];
+    return temp;
 }
+
 void Image::setPixelColor( int x, int y, const Color &color ) {
-   /* Enter your code here */
+    if (y * width + x < width*height) {
+        data[y * width + x] = color;
+    }
 }
 
 void Image::fill( const Color &color ) {
-   /* Enter your code here */
+    for (int i = 0; i < (width * height); i++) {
+        data[i] = color;
+    }
 }
