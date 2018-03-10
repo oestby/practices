@@ -3,6 +3,7 @@
 #include "vector.hpp"
 #include "Image.h"
 #include "line.hpp"
+#include "rectangle.hpp"
 
 void testVectors(){
         //Creates matrix A and fills it.
@@ -64,7 +65,9 @@ void testImageStuff() {
     Line line_2(Point(0,0), Point(100,200), Color(200,200,200));
     line_2.draw(test);
     
-    
+    Rectangle rect(Point(10,10), Point(50,50), Color(255, 0, 0));
+    rect.draw(test);
+
     saveImage(test, "test.bmp");
 }
 
