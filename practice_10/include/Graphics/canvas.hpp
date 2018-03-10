@@ -6,7 +6,8 @@
 
 class Canvas {
 public:
-    
+    void addShape(Shape* shape);
+    void rasterizeTo(Image& img);
 
 private:
     std::vector<Shape*> shapes;

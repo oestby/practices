@@ -27,6 +27,7 @@ bin/line.o: src/line.cpp
 bin/rect.o: src/rectangle.cpp
 	$(CPP) $(FLAGS) -o bin/rect.o -c src/rectangle.cpp $(INCLUDE)
 
+
 .PHONY: clean
 
 clean:
