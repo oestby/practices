@@ -1,4 +1,4 @@
-#include "circle.hpp"
+#include "Graphics/circle.hpp"
 
 Circle::Circle(const Point& origin, int radius, const Color& color):
 Shape(color), origin(origin), radius(radius)
@@ -7,6 +7,6 @@ Shape(color), origin(origin), radius(radius)
 }
 
 void Circle::draw(Image& img) {
-    
+
 
 }
