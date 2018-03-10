@@ -17,6 +17,8 @@ public:
     Matrix operator-=(Matrix m);
     Matrix operator+(Matrix m);
     Matrix operator-(Matrix m);
+    Matrix operator*(Matrix m);
+    Matrix operator*=(Matrix m);
 
     double get(int row, int col = 0) const;
     void set(double value, int row, int col = 0);

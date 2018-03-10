@@ -125,6 +125,36 @@ Matrix::operator-=(Matrix m)
 }
 
 Matrix
+Matrix::operator*(Matrix m)
+{
+    if (isValid() && m.isValid() && 
+        getHeight() == m.getWidth())
+    {
+        Matrix temp(m.getHeight(), getWidth());
+        for (int i = 0; i < temp.getHeight(); i++)
+        {
+            for (int j = 0; j <temp.getWidth(); j++)
+            {
+                double sum = 0;
+                for (int k = 0; k < getHeight(); k++)
+                {
+                    sum += get(i,k) * m.get(k,j);
+                }
+                temp.set(sum, i, j);
+                
+            }
+        }
+        return temp;
+    }
+    else
+    {
+        Matrix temp;
+        return temp;
+    }
+
+}
+
+Matrix
 Matrix::operator+(Matrix m)
 {   
     if(this->isValid() &&
@@ -219,9 +249,9 @@ Matrix::fill(double num)
 {
     if (this->isValid())
     {
-        for (int i = 0; i < this->getWidth(); i++)
+        for (int i = 0; i < this->getHeight(); i++)
         {
-            for (int j = 0; j < this->getHeight(); j++)
+            for (int j = 0; j < this->getWidth(); j++)
             {
                 elements[i][j] = num;
             }
