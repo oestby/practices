@@ -55,6 +55,5 @@ void testVectors(){
 int main() {
 
 
-
     return 0;
 }
