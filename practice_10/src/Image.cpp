@@ -1,4 +1,4 @@
-#include "Image.h"
+#include "Graphics/Image.h"
 
 /*****************************************************
  * You _should_ change the functions in this file.   *

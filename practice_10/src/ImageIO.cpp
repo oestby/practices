@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include <climits>
-#include "Image.h"
+#include "Graphics/Image.h"
 
 /////////////////////////////////////////////////////////////////////
 //  NB! Include this file and the file Image.h in your project.    //

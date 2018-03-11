@@ -58,14 +58,18 @@ void testImageStuff() {
     Color col(193,84,193);
     test.fill(col);
 
-    Line line(Point(0,0), Point(100, 50), Color(200,200,200));
-    Line line_2(Point(0,0), Point(100,200), Color(200,200,200));
+    Line line(Point(30,30), Point(70, 30), Color(200,200,200));
     Rectangle rect(Point(10,10), Point(50,50), Color(255, 0, 0));
+    Circle circ(Point(30, 60), 10, Color(0, 255, 0));
+    Circle circ_2(Point(70,60), 10, Color(0,255,0));
+    Circle circ_3(Point(50,50), 50, Color(255,0,0));
 
     Canvas canvas;
     canvas.addShape(&line);
-    canvas.addShape(&line_2);
     canvas.addShape(&rect);
+    canvas.addShape(&circ);
+    canvas.addShape(&circ_2);
+    canvas.addShape(&circ_3);
     canvas.rasterizeTo(test);
     saveImage(test, "test.bmp");
 }

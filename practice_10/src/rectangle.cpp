@@ -1,4 +1,4 @@
-#include "rectangle.hpp"
+#include "Graphics/rectangle.hpp"
 
 Rectangle::Rectangle(const Point& left_corner, const Point& right_corner, const Color& color):
 Shape(color), l_corner(left_corner), r_corner(right_corner)
