@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(practice_2)
 
-set(CMAKE_CPP_FLAGS "-g -std=c++17 -Wall")
+add_compile_options(-g -Wall -std=c++17)
 
 include_directories(include)
 file(GLOB SRC "src/*.cpp")
