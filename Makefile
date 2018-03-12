@@ -15,3 +15,5 @@ build:
 	cd practice_9; make
 	cd practice_10; make
 
+test:
+	@echo "Tests!"
