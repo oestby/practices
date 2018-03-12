@@ -1,0 +1,3 @@
+/home/oskar/Documents/school/prosedyre_og_obj/practices/practice_1/build/CMakeFiles/rebuild_cache.dir
+/home/oskar/Documents/school/prosedyre_og_obj/practices/practice_1/build/CMakeFiles/edit_cache.dir
+/home/oskar/Documents/school/prosedyre_og_obj/practices/practice_1/build/CMakeFiles/main.dir

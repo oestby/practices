@@ -1,5 +1,5 @@
 #include <iostream>
-#include "include/task_1.hpp"
+#include "task_1.hpp"
 
 void calculateLoanPayments(){
     int loan, interest, years;
