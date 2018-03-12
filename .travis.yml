@@ -3,6 +3,7 @@ language:
 
 compiler:
     g++
+script: ./build.sh
 
 install:
     true
