@@ -1,4 +1,5 @@
 # Practices
+[![Build Status](https://travis-ci.org/Oskiboy/practices.svg?branch=master)](https://travis-ci.org/Oskiboy/practices)
 
 Practices in TDT4102 spring 2018.
 A place to stash all my practices online.
