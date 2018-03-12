@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpractice_lib.a  CMakeFiles/practice_lib.dir/src/task_1.cpp.o CMakeFiles/practice_lib.dir/src/task_2.cpp.o CMakeFiles/practice_lib.dir/src/task_4.cpp.o CMakeFiles/practice_lib.dir/src/task_5.cpp.o
+/usr/bin/ranlib libpractice_lib.a

@@ -1,2 +1,9 @@
-language: cpp
-install: */make
+language:
+    cpp
+
+compiler:
+    g++
+script: ./build.sh
+
+install:
+    true

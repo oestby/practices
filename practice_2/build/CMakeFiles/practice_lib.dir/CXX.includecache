@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/task_1.hpp
+
+/home/oskar/Documents/school/prosedyre_og_obj/practices/practice_2/src/task_1.cpp
+iostream
+-
+
+/home/oskar/Documents/school/prosedyre_og_obj/practices/practice_2/src/task_2.cpp
+iostream
+-
+iomanip
+-
+
+/home/oskar/Documents/school/prosedyre_og_obj/practices/practice_2/src/task_4.cpp
+iostream
+-
+cmath
+-
+
+/home/oskar/Documents/school/prosedyre_og_obj/practices/practice_2/src/task_5.cpp
+iostream
+-
+task_1.hpp
+/home/oskar/Documents/school/prosedyre_og_obj/practices/practice_2/src/task_1.hpp
+

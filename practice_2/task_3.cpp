@@ -1,8 +1,9 @@
 #include <iostream>
-#include "include/task_2.hpp"
-#include "include/task_1.hpp"
-#include "include/task_4.hpp"
-#include "include/task_5.hpp"
+#include <stdlib.h>
+#include "task_2.hpp"
+#include "task_1.hpp"
+#include "task_4.hpp"
+#include "task_5.hpp"
 
 void multipleTable(){
     int size;
