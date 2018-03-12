@@ -1,5 +1,5 @@
 CPP = g++
-FLAGS = -std=c++14
+FLAGS = -std=c++17
 INCLUDE = -I include
 
 practice_2.o: src/task_3.cpp
