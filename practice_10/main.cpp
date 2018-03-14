@@ -76,6 +76,7 @@ void testImageStuff() {
 
 
 int main() {
+    testVectors();
     testImageStuff();
     return 0;
 }

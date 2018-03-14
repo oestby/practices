@@ -100,7 +100,7 @@ Minesweeper::openAdjacent(int row, int col)
                 if (!tiles[i][j].mine && !tiles[i][j].open)
                 {
                     tiles[i][j].open = true;
-                    openAdjacent(i,j);
+                    if (numAdjacentMines(i,j) == 0) openAdjacent(i,j);
                 }
             }
         }
