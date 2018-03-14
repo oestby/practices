@@ -21,7 +21,7 @@ public:
     Color getColor(void) const { return color; }
 
     //For drawing to an image.
-    virtual void draw(Image& img) {  };
+    virtual void draw(Image& img) = 0;
 private:
     Color color;
 };
