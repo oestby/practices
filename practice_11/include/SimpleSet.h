@@ -1,10 +1,13 @@
+#ifndef SIMPLESET_HPP
+#define SIMPLESET_HPP
+
 class SimpleSet{
     public:
         /** Construct empty set **/
         SimpleSet(int size = 0):
         currentSize(size), maxSize(512) 
         {
-            data = new int[currentSize];
+            data = new int[maxSize];
         }
         /** Destructor */
         ~SimpleSet() {
@@ -75,16 +78,19 @@ class SimpleSet{
         }
         /** Resizes data, superflous elements are dropped. **/
         void resize(int n) {
-            std::cout << "Resizing from " << currentSize;
-            currentSize += n;
-            std::cout << " to " << currentSize << std::endl;
-            int* temp = new int[currentSize];
-            for (int i = 0; i < currentSize; i++) {
-                temp[i] = data[i];
+            if (i > 0) {
+                if (currentSize != maxSize) {
+                    currentSize++;
+                }
             }
-            delete[] data;
-            data = temp;
+            else if(i < 0) {
+                if (currentSize > 1) {
+                    currentSize--;
+                }
+            }
         }
 
 };
+
+#endif
 
