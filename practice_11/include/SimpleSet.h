@@ -1,13 +1,15 @@
 #ifndef SIMPLESET_HPP
 #define SIMPLESET_HPP
+#include <stdexcept>
 
+template<class T>
 class SimpleSet{
     public:
         /** Construct empty set **/
         SimpleSet(int size = 0):
         currentSize(size), maxSize(512) 
         {
-            data = new int[maxSize];
+            data = new T[maxSize];
         }
         /** Destructor */
         ~SimpleSet() {
@@ -15,7 +17,7 @@ class SimpleSet{
         }
 
         /** Insert i into set, return true if the element was inserted, else false **/
-        bool insert(int i) {
+        bool insert(T i) {
             if (find(i) >= 0) return false;
             else {
                 resize(1);
@@ -24,7 +26,7 @@ class SimpleSet{
             }
         }
         /** Returns true if i is in the set **/
-        bool exists(int i) {
+        bool exists(T i) {
             if (find(i) >= 0) {
                 return true;
             }
@@ -33,7 +35,7 @@ class SimpleSet{
             }
         }
         /** Removes i from the set, return true if an element was removed **/
-        bool erase(int i) {
+        bool erase(T i) {
             int index = find(i);
             if(index >= 0) {
                 for (int i = index; i < currentSize - 1; i++) {
@@ -44,33 +46,37 @@ class SimpleSet{
             }
             return false;
         }
-
-        int* begin() {
-            return &data[0];
+        int getLength() const {
+            return currentSize;
         }
 
-        int* end() {
-            return &data[currentSize];
-        }
-        int at(int index) {
+        T at(int index) {
             if(index < 0 || index > currentSize) {
-                exit(0);
+                throw std::out_of_range("ERROR - Index out of range");
             }
             else {
                 return data[index];
             }
         }
 
+        T* begin() {
+            return &data[0];
+        }
+
+        T* end() {
+            return &data[currentSize];
+        }
+
     private:
         /** Dynamic array containing set elements **/
-        int *data;
+        T *data;
         /** Current number of elements **/
         int currentSize;
         /** Max capasity of data **/
         int maxSize;       
         
         /** Returns the index where i may be found, else an invalid index. **/
-        int find(int i) {
+        int find(T i) {
             for (int j = 0; j < currentSize; j++) {
                 if (data[j] == i) return j;
             }
@@ -78,12 +84,12 @@ class SimpleSet{
         }
         /** Resizes data, superflous elements are dropped. **/
         void resize(int n) {
-            if (i > 0) {
+            if (n > 0) {
                 if (currentSize != maxSize) {
                     currentSize++;
                 }
             }
-            else if(i < 0) {
+            else if(n < 0) {
                 if (currentSize > 1) {
                     currentSize--;
                 }
