@@ -58,6 +58,11 @@ class SimpleSet{
                 return data[index];
             }
         }
+        
+        int getLength(void) const {
+            return currentSize;
+        }
+
 
         T* begin() {
             return &data[0];
@@ -95,6 +100,7 @@ class SimpleSet{
                 }
             }
         }
+        
 
 };
 
