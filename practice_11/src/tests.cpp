@@ -119,13 +119,40 @@ void testSimpleSet() {
 }
 
 void testLinkedLists() {
+    std::cout << "Making a linked list:" << std::endl;
     LinkedList list;
-    auto first = list.insert(list.end(), "first!");
+    
+    std::cout << "Inserting \"first!\" at the first element:" << std::endl;
+    auto first = list.insert(list.begin(), "first!");
+    std::cout << "Starting to add 100 elements:" << std::endl;
     for (int i = 0; i < 100; i++) {
-        list.insert(list.end(), "test");
+        std::string text = "test " + std::to_string(i);
+        first = list.insert(first, text);
     }
-    std::cout << *first << std::endl;
+
+    std::cout << "Prints all the elements:" << std::endl;
     std::cout << list << std::endl;
+
+    std::cout << "Removes element 50 and 60" << std::endl;
+    auto element = list.begin();
+    for (int i = 0; i < 61; i++) {
+        if (i == 50 || i == 60) {
+            std::cout << "Removes element " << i << std::endl;
+            element = list.remove(element);
+            continue;
+        }
+        element = element->getNext();
+    }
+
+    std::cout << "Finding \"test 40\" and \"test 50\"" << std::endl;
+    std::cout << "Found \"test 40\"? " << (list.find("test 40")?"yes":"no") << std::endl;
+    std::cout << "Found \"test 50\"? " << (list.find("test 50")?"yes":"no") << std::endl;
+    std::cout << "Removes the \"test 40\" from the list." << std::endl;
+    std::cout << "Is \"test 40\" removed? " << (list.find("test 40")?"yes":"no") << std::endl;
+
+    std::cout << "Printing list:" << std::endl;
+    std::cout << list << std::endl;
+    std::cout << "Test finished!" << std::endl;
 }
 
 void testForwardLists() {

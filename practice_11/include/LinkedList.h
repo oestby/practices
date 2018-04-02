@@ -73,13 +73,16 @@ public:
     // node which contains value. The new node is inserted into the LinkedList BEFORE the
     // node pointed to by pos.
     Node* insert(Node *pos, const std::string& value){
-        for (auto it = this->begin(); it != this->end(); it = it->getNext()) {
-            if (it->getNext() == pos) {
-                it->next = std::make_unique<Node>(value, std::move(it->next));
-                break;
-            }
+        if (this->isEmpty()) {
+            auto temp = std::move(head);
+            head = std::make_unique<Node>(value, std::move(temp));
+            return head.get();
         }
-        return pos->getNext();
+        else {
+            auto temp = std::move(pos->next);
+            pos->next = std::make_unique<Node>(value, std::move(temp));
+            return pos->getNext();
+        }
     }
 
     // The find function traverses the linked list and returns a pointer to the first node
@@ -92,30 +95,34 @@ public:
                 return it; 
             }
         }
-        return end();
+        return nullptr;
     }
 
     // The remove function takes a pointer to a node, and removes the node from the list. The
     // function returns a pointer to the element after the removed node.
     Node* remove(Node* pos) {
-        Node* next = pos->getNext();
-        for (auto it = this->begin(); it != this->end(); it = it->getNext()) {
-            if (it->getNext() == pos) {
-                std::unique_ptr<Node> next = std::move(it->next->next);
-                std::string value = it->next->value;
-                it->next.release();
-                it->next = std::make_unique<Node>(value, std::move(next));
-                break;
-            }
-        return next;
+        if (pos == this->begin()) {
+            auto temp = std::move(pos);
+            head = std::move(temp->next);
+            return head->next.get();
         }
+        else {
+            for (auto it = this->begin(); it != this->end(); it = it->getNext()) {
+                if (it->getNext() == pos) {
+                    auto temp = std::move(pos->next);
+                    it->next = std::move(temp);
+                    return it->next.get();
+                }
+            }
+        }
+        return nullptr;
     }
 
     // The remove function takes a string and removes the first node which contains the value.
     void remove(const std::string& value) {
         for (auto it = this->begin(); it != this->end(); it = it->getNext()) {
             if (it->getValue() == value) {
-                remove(it);
+                this->remove(it);
             }
         }
     }
@@ -125,10 +132,16 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, const LinkedList& list) {
-    for (auto it = list.begin(); it != list.end(); it = it->getNext()) {
-        os << it->getValue() << std::endl;
+    if (!list.isEmpty()) {
+        for (auto it = list.begin(); it != list.end(); it = it->getNext()) {
+            os << it->getValue() << std::endl;
+        }
+        return os;
     }
-    return os;
+    else {
+        os << "Empty list" << std::endl;
+        return os;
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const Node& node) {
