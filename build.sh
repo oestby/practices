@@ -2,5 +2,7 @@
 for dir in */;
 do
     dir=${dir%*/}
-    ./${dir##*/}/build.sh
+    cd ./${dir##*/}/
+    ./build.sh
+    cd ..
 done
