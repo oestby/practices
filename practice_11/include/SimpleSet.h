@@ -60,6 +60,11 @@ class SimpleSet{
                 return data[index];
             }
         }
+        
+        int getLength(void) const {
+            return currentSize;
+        }
+
 
     private:
         /** Dynamic array containing set elements **/
@@ -78,17 +83,18 @@ class SimpleSet{
         }
         /** Resizes data, superflous elements are dropped. **/
         void resize(int n) {
-            if (i > 0) {
+            if (n > 0) {
                 if (currentSize != maxSize) {
                     currentSize++;
                 }
             }
-            else if(i < 0) {
+            else if(n < 0) {
                 if (currentSize > 1) {
                     currentSize--;
                 }
             }
         }
+        
 
 };
 

@@ -1,6 +1,8 @@
-#pragma once
+#ifndef LINKEDLISTS_HPP 
+#define LINKEDLISTS_HPP
 
 #include <memory>
+#include <utility>
 #include <ostream>
 #include <string>
 
@@ -70,25 +72,69 @@ public:
     // The insert function takes a pointer to node (pos) and a string (value). It creates a new
     // node which contains value. The new node is inserted into the LinkedList BEFORE the
     // node pointed to by pos.
-    Node* insert(Node *pos, const std::string& value);
+    Node* insert(Node *pos, const std::string& value){
+        for (auto it = this->begin(); it != this->end(); it = it->getNext()) {
+            if (it->getNext() == pos) {
+                it->next = std::make_unique<Node>(value, std::move(it->next));
+                break;
+            }
+        }
+        return pos->getNext();
+    }
 
     // The find function traverses the linked list and returns a pointer to the first node
     // that contains the value given.
     // If the value isn't in the list, find returns a pointer to the dummy node at the end
     // of the list.
-    Node* find(const std::string& value);
+    Node* find(const std::string& value) {
+        for (auto it = this->begin(); it != this->end(); it = it->getNext()) {
+            if (it->getValue() == value) {
+                return it; 
+            }
+        }
+        return end();
+    }
 
     // The remove function takes a pointer to a node, and removes the node from the list. The
     // function returns a pointer to the element after the removed node.
-    Node* remove(Node* pos);
-
+    Node* remove(Node* pos) {
+        Node* next = pos->getNext();
+        for (auto it = this->begin(); it != this->end(); it = it->getNext()) {
+            if (it->getNext() == pos) {
+                std::unique_ptr<Node> next = std::move(it->next->next);
+                std::string value = it->next->value;
+                it->next.release();
+                it->next = std::make_unique<Node>(value, std::move(next));
+                break;
+            }
+        return next;
+        }
+    }
 
     // The remove function takes a string and removes the first node which contains the value.
-    void remove(const std::string& value);
-
+    void remove(const std::string& value) {
+        for (auto it = this->begin(); it != this->end(); it = it->getNext()) {
+            if (it->getValue() == value) {
+                remove(it);
+            }
+        }
+    }
 
     // write a string representation of the list to the ostream
     friend std::ostream & operator<<(std::ostream & os, const LinkedList& list);
 };
 
+std::ostream& operator<<(std::ostream& os, const LinkedList& list) {
+    for (auto it = list.begin(); it != list.end(); it = it->getNext()) {
+        os << it->getValue() << std::endl;
+    }
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const Node& node) {
+    os << node.getValue();
+    return os;
+}
+
+#endif
 
