@@ -72,7 +72,7 @@ void testStdSet() {
 
 void testSimpleSet() {
     
-    SimpleSet integers;
+    SimpleSet<int> integers;
     std::cout << "Adds all integers from 0 to 100 to the set" << std::endl;
     for (int i = 0; i < 100; i++) {
         std::cout << "Is " << i << " added?" << integers.insert(i) << std::endl;

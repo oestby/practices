@@ -46,9 +46,6 @@ class SimpleSet{
             }
             return false;
         }
-        int getLength() const {
-            return currentSize;
-        }
 
         T at(int index) {
             if(index < 0 || index > currentSize) {
