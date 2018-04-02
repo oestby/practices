@@ -135,8 +135,8 @@ void testLinkedLists() {
 
     std::cout << "Removes element 50 and 60" << std::endl;
     auto element = list.begin();
-    for (int i = 0; i < 61; i++) {
-        if (i == 50 || i == 60) {
+    for (int i = 0; i < 70; i++) {
+        if (i == 51 || i == 61) {
             std::cout << "Removes element " << i << std::endl;
             element = list.remove(element);
             continue;
@@ -148,7 +148,8 @@ void testLinkedLists() {
     std::cout << "Found \"test 40\"? " << (list.find("test 40")?"yes":"no") << std::endl;
     std::cout << "Found \"test 50\"? " << (list.find("test 50")?"yes":"no") << std::endl;
     std::cout << "Removes the \"test 40\" from the list." << std::endl;
-    std::cout << "Is \"test 40\" removed? " << (list.find("test 40")?"yes":"no") << std::endl;
+    list.remove("test 40");
+    std::cout << "Is \"test 40\" removed? " << (list.find("test 40")?"no":"yes") << std::endl;
 
     std::cout << "Printing list:" << std::endl;
     std::cout << list << std::endl;

@@ -123,6 +123,7 @@ public:
         for (auto it = this->begin(); it != this->end(); it = it->getNext()) {
             if (it->getValue() == value) {
                 this->remove(it);
+                break;
             }
         }
     }
