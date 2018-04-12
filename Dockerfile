@@ -5,11 +5,12 @@ RUN apt-get update -qq && apt-get install -qqy \
     build-essential \
     cmake \
     make \
-    git
-
-COPY ./build_dependencies.sh /
-RUN /bin/bash ./build_dependencies.sh
-RUN rm build_dependencies.sh
+    git \
+    libsfml-dev \
+    gcc \
+    g++ \
+    clang
+    
 
 
 COPY ./ /workspace
