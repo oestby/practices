@@ -4,9 +4,9 @@
 #include <SafeArray.hpp>
 
 template<class T>
-class FancySafeArray {
+class FancySafeArray: public SafeArray {
     public:
-
+        FancySafeArray(size_t size): SafeArray(size) { };
     private:
 
 };
