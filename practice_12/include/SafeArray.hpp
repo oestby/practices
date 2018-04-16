@@ -28,12 +28,12 @@ class SafeArray {
 
         SafeArray<T>& operator=(const SafeArray<T>& ar) {
             size_ = ar.size();
+            std::unique_ptr<T[]> temp = std::move(data);
             data.reset(new T[size_]);
             for(unsigned int i = 0; i < size_; ++i) {
                 data[i] = ar[i];
             }
-            //TODO Find out why this will not cast to a reference.
-            return this;
+            return *this;
         }
 
         void insert(const T& value, size_t index) {
@@ -42,12 +42,14 @@ class SafeArray {
         }
 
         void resize(size_t new_size) {
-            std::unique_ptr<T[]> temp = std::move(data);
-            data.reset(new T[new_size]);
-            for (unsigned int i = 0; i < size_; i++) {
-                data[i] = temp[i];
-                if (i >= new_size) break;
+            std::unique_ptr<T[]> temp(new T[new_size]{});
+            for(size_t i = 0; i < new_size; ++i) {
+                if(i >= size_) {
+                    break;
+                }
+                temp[i] = data[i];
             }
+            std::swap(temp, data);
             size_ = new_size;
         }
 
