@@ -13,7 +13,7 @@ class SafeArray {
         SafeArray(unsigned int size):
         size_(size)    
         {
-            data.reset(new T[size_]);
+            data = std::make_unique<T[]>(size_);
         }
         
         SafeArray(const SafeArray<T>& ar):
@@ -59,10 +59,12 @@ class SafeArray {
         size_t size(void) const { return size_; }
 
         T& operator[](size_t index){
+            if (index > size_) throw std::out_of_range;
             return data[index];
         }
 
         const T& operator[](size_t index) const {
+            if (index > size_) throw std::out_of_range;
             return data[index];
         }
     
